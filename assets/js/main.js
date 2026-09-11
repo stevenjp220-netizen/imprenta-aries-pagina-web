@@ -5,13 +5,49 @@ $(function () {
     });
   }
 
-  $('#contact-form').on('submit', function (event) {
+  const config = window.SUPABASE_CONFIG;
+  const supabaseClient = config && window.supabase
+    ? window.supabase.createClient(config.url, config.publishableKey)
+    : null;
+
+  $('#contact-form').on('submit', async function (event) {
     event.preventDefault();
-    if (this.checkValidity()) {
-      $('#form-success').removeClass('d-none').attr('role', 'status');
-      this.reset();
+    const form = this;
+    const submitButton = $(form).find('[type="submit"]');
+    const success = $('#form-success');
+    success.addClass('d-none');
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      form.classList.add('was-validated');
+      return;
     }
-    this.classList.add('was-validated');
+
+    if (!supabaseClient) {
+      alert('No se pudo conectar con el formulario. Inténtalo de nuevo más tarde.');
+      return;
+    }
+
+    const fields = $(form).find('input, select, textarea');
+    submitButton.prop('disabled', true).text('Enviando...');
+    const { error } = await supabaseClient.from('quote_requests').insert({
+      full_name: fields.eq(0).val().trim(),
+      phone: fields.eq(1).val().trim(),
+      email: fields.eq(2).val().trim(),
+      job_type: fields.eq(3).val(),
+      details: fields.eq(4).val().trim(),
+      source: 'website'
+    });
+
+    submitButton.prop('disabled', false).html('Enviar solicitud <i class="bi bi-arrow-right ms-2"></i>');
+    if (error) {
+      alert('No pudimos enviar tu solicitud. Inténtalo nuevamente o contáctanos por WhatsApp.');
+      return;
+    }
+
+    form.reset();
+    form.classList.remove('was-validated');
+    success.removeClass('d-none').attr('role', 'status');
   });
 
   $('.portfolio-filters button').on('click', function () {
