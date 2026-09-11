@@ -1,0 +1,40 @@
+/* Fotografía original de producción y trabajos impresos. */
+.hero-art {
+  background-image:
+    linear-gradient(120deg, rgba(202, 212, 255, .24), rgba(19, 27, 46, .16)),
+    url('../hero-printing-workshop.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-art::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .08), transparent 58%);
+}
+
+.portfolio-card {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .55);
+}
+
+.tone-blue {
+  background-image: linear-gradient(125deg, rgba(18, 49, 135, .72), rgba(76, 101, 210, .52)), url('../portfolio-print-products.png');
+  background-position: 18% center;
+}
+
+.tone-orange {
+  background-image: linear-gradient(125deg, rgba(184, 63, 7, .72), rgba(255, 151, 55, .48)), url('../hero-printing-workshop.png');
+  background-position: 80% center;
+}
+
+.tone-red {
+  background-image: linear-gradient(125deg, rgba(125, 4, 38, .75), rgba(231, 61, 106, .48)), url('../portfolio-print-products.png');
+  background-position: 76% center;
+}
+
+.tone-dark {
+  background-image: linear-gradient(125deg, rgba(12, 19, 37, .78), rgba(43, 57, 83, .48)), url('../hero-printing-workshop.png');
+  background-position: 68% center;
+}
