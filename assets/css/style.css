@@ -42,3 +42,5 @@ button,a,input,select,textarea{touch-action:manipulation}
   .proof-label{font-size:.58rem}
   .calculator-panel,.summary-card{padding:1rem}
 }
+
+.skip-link{position:fixed;z-index:2000;left:1rem;top:-4rem;background:var(--ink);color:#fff;padding:.7rem 1rem;font-weight:700;text-decoration:none}.skip-link:focus{top:1rem;color:#fff}
