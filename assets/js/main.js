@@ -28,7 +28,7 @@ $(function () {
     $('#summary-qty').text(`${format.format(state.qty)} unidades`);
 
     const message = `Hola Aries Imprenta, deseo cotizar ${state.product}, ${state.finish} ${state.weight}, medida ${width} × ${height} cm, ${state.qty} unidades. Estimado: Bs. ${total}.`;
-    $('#whatsapp-quote').attr('href', `https://wa.me/59176992817?text=${encodeURIComponent(message)}`);
+    $('#whatsapp-quote').attr('href', `https://wa.me/59167432215?text=${encodeURIComponent(message)}`);
   }
 
   $('.choice-btn').on('click', function () {
